@@ -4,4 +4,11 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    return HttpResponse("Welcome to the Little Lemon restaurant")
+    message = f'''
+    Path: {request.path} <br/ >
+    Path: {request.META['REMOTE_ADDR']} <br/ >
+    Path: {request.scheme} <br/ >
+    Path: {request.method} <br/ >
+    Path: {request.META['HTTP_USER_AGENT']} <br/ >
+    '''
+    return HttpResponse(message, content_type='text/html', charset='utf-8')
