@@ -3,13 +3,11 @@ from django.http import HttpResponse
 
 
 # Create your views here.
-def menu_items(request, dish):
-    items = {
-        'pasta': 'Pasta and cheese',
-        'bbq': 'Beef BBQ',
-        'fruits': 'Tropical fruits'
+def drinks(request, drink_name):
+    drinks = {
+        'moca': 'tipo de café',
+        'te': 'tipo de bebida',
+        'limonada': 'tipo de refresco',
+        'lulada': 'tipo de refresco'
     }
-
-    description = items[dish]
-
-    return HttpResponse(f"<h1>{dish}: {description}</h1>")
+    return HttpResponse(f"<h1>{drink_name}: {drinks[drink_name]}</h1>")
