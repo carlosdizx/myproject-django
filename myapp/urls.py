@@ -1,6 +1,7 @@
 from django.urls import path
+from django.shortcuts import render
 from . import views
 
 urlpatterns = [
-    path('drinks/<str:drink_name>', views.drinks, name='drink_name')
+    path('home', views.bookings,)
 ]

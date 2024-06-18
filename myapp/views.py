@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from myapp.forms import BookingForm
 
 
 # Create your views here.
-def drinks(request, drink_name):
-    drinks = {
-        'moca': 'tipo de café',
-        'te': 'tipo de bebida',
-        'limonada': 'tipo de refresco',
-        'lulada': 'tipo de refresco'
-    }
-    return HttpResponse(f"<h1>{drink_name}: {drinks[drink_name]}</h1>")
+def bookings(request):
+    form = BookingForm()
+    print(request.method)
+    print(form.is_valid())
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, 'booking.html', {'form': form})
